@@ -1,7 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import NadVar from '../Components/NadVar/NadVar';
 
 export default function MainLayout() {
   return (
-    <div>MainLayout</div>
-  )
+    <>
+      <NadVar />
+      <main style={{ padding: '20px' }}>
+        <Outlet />
+      </main>
+    </>
+  );
 }
