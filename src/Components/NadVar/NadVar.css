@@ -4,9 +4,9 @@ body {
 }
 
 .Nav {
-  background-color: #222;
+  background-color: #ffff;
   width: 100vw;
-  padding: 20px 0;
+  padding: 20px;
   box-sizing: border-box;
   margin: 0;
   position: fixed;
@@ -14,8 +14,6 @@ body {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1000;
 }
 
@@ -25,12 +23,19 @@ body {
   gap: 30px;
   margin: 0;
   padding: 0;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  width: 800px;
+  padding-left: 25px;
 }
 
 .Nav .link {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 1.25rem;
   transition: color 0.3s;
@@ -43,4 +48,10 @@ body {
 
 .Nav .link.active {
   border-bottom: 3px solid #61dafb;
+}
+
+.logo img{
+width: 40px;
+height: auto;
+display: flex;
 }
