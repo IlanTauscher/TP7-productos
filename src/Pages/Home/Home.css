@@ -1,0 +1,78 @@
+.home {
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Hero de bienvenida */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.hero__title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero__button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #0056b3;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.hero__button:hover {
+  background-color: #003f7f;
+}
+
+/* Sección de categorías */
+.categories-section {
+  padding: 2rem 1rem;
+}
+
+.categories-section__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.categories-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.categories-list__item {
+  /* espacio reservado si necesitas estilos específicos */
+}
+
+.categories-list__link {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.categories-list__link:hover {
+  background-color: #e0e0e0;
+}
