@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './ProductsGrid.css';
 
 function ProductCard({ product }) {
@@ -16,6 +18,7 @@ function ProductCard({ product }) {
         <div className="product-footer">
           <span className="product-price">${product.price}</span>
         </div>
+        <Link to={`/ProductoDetalle/${product.id}`} className="detalleBoton">Ver mas</Link>
       </div>
     </div>
   );
@@ -27,19 +30,18 @@ export default function ProductsGrid() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products')
-      .then((res) => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data.products);
-        setLoading(false);
-      })
-      .catch((err) => {
+    const obtenerProductos = async () => {
+      try {
+        const res = await axios.get('https://dummyjson.com/products');
+        setProducts(res.data.products);
+      } catch (err) {
         setError(err);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    obtenerProductos();
   }, []);
 
   if (loading) return <p>Cargando productos...</p>;

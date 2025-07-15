@@ -1,33 +1,31 @@
 .home {
   padding: 2rem 1rem;
-  font-family: Arial, sans-serif;
   color: #333;
 }
 
-/* Hero de bienvenida */
-.hero {
+.bienvenido {
   text-align: center;
   padding: 4rem 1rem;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #f9f9f9;
+  color: #000;
   border-radius: 8px;
   margin-bottom: 2rem;
 }
 
-.hero__title {
+.bienvenido__title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.hero__subtitle {
+.bienvenido__subtitle {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-.hero__button {
+.bienvenido__button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #0056b3;
+  background-color: #2e7d32;
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
@@ -35,11 +33,10 @@
   transition: background-color 0.2s;
 }
 
-.hero__button:hover {
-  background-color: #003f7f;
+.bienvenido__button:hover {
+  background-color: #1b571e;
 }
 
-/* Sección de categorías */
 .categories-section {
   padding: 2rem 1rem;
 }
@@ -59,20 +56,55 @@
   padding: 0;
 }
 
-.categories-list__item {
-  /* espacio reservado si necesitas estilos específicos */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
 }
 
-.categories-list__link {
-  display: block;
-  padding: 0.75rem 1.25rem;
-  background-color: #f0f0f0;
-  color: #333;
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left;
+  padding: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
   border-radius: 4px;
-  text-decoration: none;
-  transition: background-color 0.2s;
 }
 
-.categories-list__link:hover {
-  background-color: #e0e0e0;
+.product-info {
+  margin-top: 0.5rem;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.product-category {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.product-footer {
+  font-weight: bold;
+  color: #2e7d32;
 }
