@@ -64,6 +64,7 @@ function ProductCard({ product }) {
         <div className="product-footer">
           <span className="product-price">${product.price}</span>
         </div>
+        <Link to={`/ProductoDetalle/${product.id}`} className="detalleBoton">Ver mas</Link>
       </div>
     </div>
   );
