@@ -1,55 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ProductsGrid.css';
 
-function ProductCard({ product }) {
-  return (
-    <div className="product-card">
-      <img
-        src={product.images[0]}
-        alt={product.title}
-        className="product-image"
-      />
-      <div className="product-info">
-        <h2 className="product-title">{product.title}</h2>
-        <p className="product-category">{product.category}</p>
-        <p className="product-description">{product.description}</p>
-        <div className="product-footer">
-          <span className="product-price">${product.price}</span>
-        </div>
-        <Link to={`/ProductoDetalle/${product.id}`} className="detalleBoton">Ver mas</Link>
-      </div>
-    </div>
-  );
-}
+import ProductCard from '../ProductoCard.jsx';
 
 export default function ProductsGrid() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+ const { categoria } = useParams();
+  const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
+  const [imagenProducto, setImagenProducto] = useState({});
+  
+ useEffect(() => {
     const obtenerProductos = async () => {
+      if(categoria) {
       try {
-        const res = await axios.get('https://dummyjson.com/products');
-        setProducts(res.data.products);
+        const response = await axios.get(`https://dummyjson.com/products/category/${categoria}?limit=100`);
+        setProductos(response.data.products);
+
+        const indicesIniciales = {};
+        response.data.products.forEach(p => {
+          indicesIniciales[p.id] = 0;
+        });
+        setImagenProducto(indicesIniciales);
+
       } catch (err) {
-        setError(err);
+        console.error("Error al obtener productos:", err);
+        setError("No se pudieron cargar los productos ):");
       } finally {
-        setLoading(false);
+        setCargando(false);
       }
+    }
+    else{
+       try {
+        const response = await axios.get(`https://dummyjson.com/products?limit=100`);
+        setProductos(response.data.products);
+
+        const indicesIniciales = {};
+        response.data.products.forEach(p => {
+          indicesIniciales[p.id] = 0;
+        });
+        setImagenProducto(indicesIniciales);
+
+      } catch (err) {
+        console.error("Error al obtener productos:", err);
+        setError("No se pudieron cargar los productos ):");
+      } finally {
+        setCargando(false);
+      }
+    }
     };
 
     obtenerProductos();
-  }, []);
+  }, [categoria]);
 
-  if (loading) return <p>Cargando productos...</p>;
+
+  if (cargando) return <p>Cargando productos...</p>;
   if (error) return <p>Error al cargar productos: {error.message}</p>;
 
   return (
     <div className="products-grid">
-      {products.map((prod) => (
+      {console.log("Productos:", productos)}
+      {productos.map((prod) => (
         <ProductCard key={prod.id} product={prod} />
       ))}
     </div>

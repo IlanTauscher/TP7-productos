@@ -5,7 +5,7 @@ import QuienesSomos from './Pages/QuienesSomos/QuienesSomos.jsx';
 import Contacto from './Pages/Contacto/Contacto.jsx';
 import MainLayout from './Layout/MainLayout.jsx';
 import ProductoDetalle from './Pages/ProductoDetalle/ProductoDetalle.jsx';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 
 function App() {
 
@@ -13,14 +13,16 @@ function App() {
     <>
       <div className="row">
         <Routes>
-          <Route path="/" element={<MainLayout/>}>
-            <Route index element={<Home/>}/>
-            <Route path="productos" element={<Productos/>}/>
-            <Route path="quienesSomos" element={<QuienesSomos/>}/>
-            <Route path="contacto" element={<Contacto/>}/>
-            <Route path='ProductoDetalle/:id' element={<ProductoDetalle/>}/>
-            <Route path="*" element={<Navigate to="/" replace/>}/>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="productos" element={<Productos />} />
+            <Route path="productos/:categoria" element={<Productos />} />
+            <Route path="quienesSomos" element={<QuienesSomos />} />
+            <Route path="contacto" element={<Contacto />} />
+            <Route path="productoDetalle/:id" element={<ProductoDetalle />} />
+            <Route path="*" element={<h1>404</h1>} />
           </Route>
+
         </Routes>
       </div>
     </>

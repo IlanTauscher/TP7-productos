@@ -17,16 +17,15 @@ body {
   z-index: 1000;
 }
 
-.Nav ul {
-  display: flex;
-  list-style: none;
+.Nav > ul {
+  display: grid;
+  grid-auto-flow: column;
   gap: 30px;
+  padding: 0 0 0 25px;
   margin: 0;
-  padding: 0;
-  justify-content: flex-start;
+  list-style: none;
   align-items: center;
-  width: 800px;
-  padding-left: 25px;
+  width: 800px;      
 }
 
 .Nav .link {
