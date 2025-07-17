@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProductoCard({ product }) {
-  const { categoria } = useParams();
   console.log( "productos totales", product );
   if (!product) return null;
 

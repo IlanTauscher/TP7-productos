@@ -10,7 +10,6 @@ export default function ProductsGrid() {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-  const [imagenProducto, setImagenProducto] = useState({});
   
  useEffect(() => {
     const obtenerProductos = async () => {
@@ -23,7 +22,6 @@ export default function ProductsGrid() {
         response.data.products.forEach(p => {
           indicesIniciales[p.id] = 0;
         });
-        setImagenProducto(indicesIniciales);
 
       } catch (err) {
         console.error("Error al obtener productos:", err);
@@ -41,7 +39,6 @@ export default function ProductsGrid() {
         response.data.products.forEach(p => {
           indicesIniciales[p.id] = 0;
         });
-        setImagenProducto(indicesIniciales);
 
       } catch (err) {
         console.error("Error al obtener productos:", err);
