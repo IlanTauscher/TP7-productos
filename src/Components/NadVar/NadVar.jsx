@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import './Nadvar.css';
+import './NadVar.css';
 
 export default function NavBar() {
   const [categorias, setCategorias] = useState([]);
