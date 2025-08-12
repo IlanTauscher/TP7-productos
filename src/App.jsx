@@ -5,7 +5,7 @@ import QuienesSomos from './Pages/QuienesSomos/QuienesSomos.jsx';
 import Contacto from './Pages/Contacto/Contacto.jsx';
 import MainLayout from './Layout/MainLayout.jsx';
 import ProductoDetalle from './Pages/ProductoDetalle/ProductoDetalle.jsx';
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 

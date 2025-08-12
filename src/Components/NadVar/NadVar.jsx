@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '../../assets/agregar-producto.png';
 import axios from 'axios';
 import './NadVar.css';
 
@@ -23,7 +24,7 @@ export default function NavBar() {
       <ul>
         <li>
           <Link to="/" className="logo">
-            <img src="/agregar-producto.png" />
+            <img src={logo} alt="Logo" />
           </Link>
         </li>
         <li>
