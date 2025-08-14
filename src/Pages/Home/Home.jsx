@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
+import ProductoCard from '../../Components/ProductoCard.jsx';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -40,32 +41,11 @@ export default function Home() {
         {loading ? (<p>Cargando categorías...</p>) : (
           <div className="products-grid">
             {products.slice(0, 3).map((prod) => (
-              <ProductCard key={prod.id} product={prod} />
+              <ProductoCard key={prod.id} product={prod} />
             ))}
         </div>
         )}
       </section>
     </main>
-  );
-}
-
-function ProductCard({ product }) {
-  return (
-    <div className="product-card">
-      <img
-        src={product.images[0]}
-        alt={product.title}
-        className="product-image"
-      />
-      <div className="product-info">
-        <h2 className="product-title">{product.title}</h2>
-        <p className="product-category">{product.category}</p>
-        <p className="product-description">{product.description}</p>
-        <div className="product-footer">
-          <span className="product-price">${product.price}</span>
-        </div>
-        <Link to={`/ProductoDetalle/${product.id}`} className="detalleBoton">Ver mas</Link>
-      </div>
-    </div>
   );
 }

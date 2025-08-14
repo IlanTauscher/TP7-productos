@@ -1,0 +1,138 @@
+.cart-widget {
+  margin-left: auto;
+  position: relative;
+  margin-right: 24px;
+}
+
+.cart-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-button img {
+  width: 40px;
+  height: 40px;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -13px;
+  background: #ff4757;
+  color: #fff;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 12px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cart-panel {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  width: 320px;
+  max-height: 60vh;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1100;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-items {
+  overflow: auto;
+  padding: 10px 12px;
+  flex: 1;
+}
+
+.cart-items .item {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.cart-items .item img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-items .item .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-items .item .titulo {
+  font-weight: 600;
+}
+
+.cart-items .item .precio {
+  color: #666;
+  font-size: 14px;
+}
+
+.cart-items .item .quitar {
+  background: transparent;
+  border: none;
+  color: #ff4757;
+  cursor: pointer;
+}
+
+.cart-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 10px 12px;
+}
+
+.cart-footer .total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cart-footer .acciones {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-footer .vaciar {
+  background: #ff4757;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.vacio {
+  margin: 12px 6px;
+  color: #666;
+}
+
+.cerrar {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+

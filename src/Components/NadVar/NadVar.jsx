@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/agregar-producto.png';
 import axios from 'axios';
 import './NadVar.css';
+import CartWidget from '../CartWidget.jsx';
 
 export default function NavBar() {
   const [categorias, setCategorias] = useState([]);
@@ -51,6 +52,7 @@ export default function NavBar() {
           <Link to="/contacto" className="link">Contacto</Link>
         </li>
       </ul>
+      <CartWidget/>
     </div>
   );
 }
