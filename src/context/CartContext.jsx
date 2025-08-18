@@ -3,16 +3,16 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from '
 const CartContext = createContext(null);
 
 export const useCart = () => {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error('useCart debe usarse dentro de CartProvider');
-  return ctx;
+  const contexto = useContext(CartContext);
+  if (!contexto) throw new Error('useCart debe usarse dentro de CartProvider');
+  return contexto;
 };
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(() => {
+  const [elementosCarrito, establecerElementosCarrito] = useState(() => {
     try {
-      const guardado = localStorage.getItem('carrito');
-      return guardado ? JSON.parse(guardado) : [];
+      const carritoGuardado = localStorage.getItem('carrito');
+      return carritoGuardado ? JSON.parse(carritoGuardado) : [];
     } catch {
       return [];
     }
@@ -20,50 +20,50 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem('carrito', JSON.stringify(cartItems));
+      localStorage.setItem('carrito', JSON.stringify(elementosCarrito));
     } catch {
       // ignorar errores de persistencia
     }
-  }, [cartItems]);
+  }, [elementosCarrito]);
 
   const addToCart = (producto) => {
     if (!producto || !producto.id) return;
-    setCartItems((prev) => {
-      const existente = prev.find((p) => p.id === producto.id);
-      if (existente) {
-        return prev.map((p) =>
-          p.id === producto.id ? { ...p, quantity: p.quantity + 1 } : p
+    establecerElementosCarrito((elementosAnteriores) => {
+      const productoExistente = elementosAnteriores.find((productoEnCarrito) => productoEnCarrito.id === producto.id);
+      if (productoExistente) {
+        return elementosAnteriores.map((productoEnCarrito) =>
+          productoEnCarrito.id === producto.id ? { ...productoEnCarrito, cantidad: productoEnCarrito.cantidad + 1 } : productoEnCarrito
         );
       }
       return [
-        ...prev,
+        ...elementosAnteriores,
         {
           id: producto.id,
-          title: producto.title,
-          price: producto.price,
-          thumbnail: producto.thumbnail || (producto.images && producto.images[0]) || '',
-          quantity: 1,
+          titulo: producto.title,
+          precio: producto.price,
+          miniatura: producto.thumbnail || (producto.images && producto.images[0]) || '',
+          cantidad: 1,
         },
       ];
     });
   };
 
   const removeFromCart = (idProducto) => {
-    setCartItems((prev) => prev.filter((p) => p.id !== idProducto));
+    establecerElementosCarrito((elementosAnteriores) => elementosAnteriores.filter((productoEnCarrito) => productoEnCarrito.id !== idProducto));
   };
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => establecerElementosCarrito([]);
 
   const getTotal = useMemo(() => {
-    return () => cartItems.reduce((acc, p) => acc + p.price * p.quantity, 0);
-  }, [cartItems]);
+    return () => elementosCarrito.reduce((acumulador, productoEnCarrito) => acumulador + productoEnCarrito.precio * productoEnCarrito.cantidad, 0);
+  }, [elementosCarrito]);
 
   const getItemCount = useMemo(() => {
-    return () => cartItems.reduce((acc, p) => acc + p.quantity, 0);
-  }, [cartItems]);
+    return () => elementosCarrito.reduce((acumulador, productoEnCarrito) => acumulador + productoEnCarrito.cantidad, 0);
+  }, [elementosCarrito]);
 
   const value = {
-    cartItems,
+    elementosCarrito,
     addToCart,
     removeFromCart,
     clearCart,

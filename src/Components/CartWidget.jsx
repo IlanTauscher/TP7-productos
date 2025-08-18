@@ -4,11 +4,11 @@ import icono from '../assets/carrito-de-compras.png';
 import './CartWidget.css';
 
 export default function CartWidget() {
-  const { cartItems, removeFromCart, clearCart, getTotal, getItemCount } = useCart();
+  const { elementosCarrito, removeFromCart, clearCart, getTotal, getItemCount } = useCart();
   const [abierto, setAbierto] = useState(false);
 
-  const total = useMemo(() => getTotal(), [cartItems, getTotal]);
-  const cantidad = useMemo(() => getItemCount(), [cartItems, getItemCount]);
+  const total = useMemo(() => getTotal(), [elementosCarrito, getTotal]);
+  const cantidad = useMemo(() => getItemCount(), [elementosCarrito, getItemCount]);
 
   return (
     <div className="cart-widget">
@@ -24,15 +24,15 @@ export default function CartWidget() {
             <button className="cerrar" onClick={() => setAbierto(false)}>×</button>
           </div>
           <div className="cart-items">
-            {cartItems.length === 0 ? (
+            {elementosCarrito.length === 0 ? (
               <p className="vacio">Aún no agregaste productos.</p>
             ) : (
-              cartItems.map((p) => (
+              elementosCarrito.map((p) => (
                 <div className="item" key={p.id}>
-                  <img src={p.thumbnail} alt={p.title} />
+                  <img src={p.miniatura} alt={p.titulo} />
                   <div className="info">
-                    <span className="titulo">{p.title}</span>
-                    <span className="precio">$ {p.price} × {p.quantity}</span>
+                    <span className="titulo">{p.titulo}</span>
+                    <span className="precio">$ {p.precio} × {p.cantidad}</span>
                   </div>
                   <button className="quitar" onClick={() => removeFromCart(p.id)}>Quitar</button>
                 </div>
@@ -45,7 +45,7 @@ export default function CartWidget() {
               <strong>$ {total.toFixed(2)}</strong>
             </div>
             <div className="acciones">
-              <button className="vaciar" onClick={clearCart} disabled={cartItems.length === 0}>Vaciar</button>
+              <button className="vaciar" onClick={clearCart} disabled={elementosCarrito.length === 0}>Vaciar</button>
             </div>
           </div>
         </div>
